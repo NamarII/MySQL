@@ -1,0 +1,26 @@
+Ejercicio1-JOINS:
+
+1)
+SELECT productos.nombre, marcas.nombre FROM productos-----------> porque no es from productos, marcas?
+INNER JOIN marcas ON productos.id_marca= marcas.ID;
+
+2)
+SELECT productos.nombre, marcas.nombre FROM productos
+LEFT JOIN marcas ON productos.id_marca= marcas.ID;
+
+3) 
+SELECT productos.nombre, marcas.nombre FROM productos
+LEFT JOIN marcas ON productos.id_marca= marcas.ID
+WHERE productos.puntuacion>3;
+
+4)
+SELECT clientes.nombre, clientes.apellido, productos.nombre FROM clientes
+LEFT JOIN productos ON  productos.id=clientes.id;
+
+5)
+SELECT clientes.nombre, clientes.apellido, productos.nombre, marcas.nombre 
+FROM clientes
+LEFT JOIN productos ON  clientes.id=productos.id
+LEFT JOIN marcas ON productos.id_marca=marcas.ID;
+
+6)

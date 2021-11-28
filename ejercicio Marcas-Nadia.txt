@@ -1,0 +1,84 @@
+ejercicio Marcas-Nadia:
+
+1)
+SELECT * FROM marcas;
+
+2)
+SELECT * FROM categorias;
+
+3)
+SELECT * FROM productos;
+
+4)
+SELECT nombre, modelo, descripcion, precio, puntuacion FROM productos;
+
+5)
+SELECT nombre, precio/puntuacion AS cuenta FROM productos;
+
+6)
+SELECT precio FROM productos
+WHERE precio<1000;
+
+7)
+SELECT nombre FROM productos
+WHERE nombre='Wii';
+
+8)
+SELECT nombre, precio FROM productos
+WHERE precio<10000 AND precio>1000;
+
+9)
+SELECT nombre, precio, puntuacion FROM productos
+WHERE (precio<10000 AND precio>1000) OR puntuacion>4;
+
+10)
+SELECT * FROM clientes
+ORDER BY nombre ASC;
+
+11)
+SELECT * FROM clientes
+ORDER BY nombre, apellido ASC;
+
+12)
+SELECT nombre, apellido, telefono, fecha_de_nacimiento FROM clientes
+WHERE telefono is NOT NULL
+ORDER BY fecha_de_nacimiento DESC;
+
+13)
+SELECT * FROM productos 
+ORDER BY puntuacion DESC
+LIMIT 5;
+
+14)
+SELECT * FROM productos 
+ORDER BY puntuacion DESC
+LIMIT 5, 5;
+
+15)
+SELECT * FROM productos
+WHERE nombre LIKE 'iphone%';
+
+16)
+
+SELECT nombre FROM productos
+WHERE nombre LIKE '%p%';
+
+17)
+SELECT nombre FROM productos
+WHERE nombre LIKE '%p%p%';
+
+18)
+SELECT CONCAT(nombre, ' ', apellido) AS 'nombre completo' FROM clientes;
+
+19)
+SELECT productos.nombre, marcas.nombre FROM productos, marcas
+WHERE productos.id_marca= marcas.id
+
+21)
+SELECT productos.nombre, marcas.nombre, puntuacion, precio FROM productos, marcas
+WHERE productos.id_marca= marcas.id AND puntuacion>3--------->(tambien se puede poner productos.puntuacion>3)
+ORDER BY precio DESC;------>(tambien se puede poner productos.precio)
+
+SELECT clientes.nombre, clientes.apellido, productos.nombre FROM clientes, productos, ventas
+WHERE ventas.id_cliente=clientes.id AND ventas.id_producto=productos.id;
+

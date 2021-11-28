@@ -1,0 +1,108 @@
+EJERCICIO 1- SENTENCIAS INICIALES:
+
+1)
+DROP TABLE if EXISTS agenda;
+
+2)
+CREATE TABLE agenda(
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+nombre VARCHAR(20),
+domicilio VARCHAR(30),
+telefono VARCHAR(11)
+);
+
+3)
+INSERT INTO agenda(nombre, domicilio, telefono)
+VALUES ('Alberto Mores','Colon 123','4234567'),
+('Juan Torres','Avellaneda 135','4458787'),
+('Roberto Carlos','Gascon 135','48952233');
+
+
+
+EJERCICIO 2:
+
+1)
+DROP TABLE if EXISTS libros;
+
+2)
+CREATE TABLE libros(
+titulo VARCHAR(20),
+autor VARCHAR(30),
+editorial VARCHAR(15)
+);
+
+3)
+INSERT INTO libros(titulo,
+autor, editorial)
+VALUES ('El Aleph','Borges','Planeta'),
+('Martin Fierro','Jose Hernandez','Emece'),
+('Aprenda PHP','Mario Molina','Emece');
+
+
+
+EJERCICIO 3:
+
+1)DROP TABLE if EXISTS agenda;
+
+2)
+CREATE TABLE agenda(
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+apellido varchar(30)
+nombre VARCHAR(20),
+domicilio VARCHAR(30),
+telefono VARCHAR(11)
+);
+
+3)
+INSERT INTO agenda(apellido, nombre, domicilio, telefono)
+Values('Mores','Alberto','Colon 123','4234567'),
+('Torres','Juan','Avellaneda 135','4458787'),
+('Lopez','Mariana','Urquiza 333','4545454'),
+('Lopez','Jose','Urquiza 333','4545454'),
+('Peralta','Susana','Gral. Paz 1234','4123456');
+
+4)
+DELETE FROM agenda
+WHERE nombre = 'Juan' OR domicilio LIKE '%Urquiza%'
+
+5)
+DELETE FROM agenda
+WHERE telefono = '4545454'
+
+
+
+EJERCICIO 4:
+
+1)
+DROP TABLE if EXISTS agenda;
+
+CREATE TABLE agenda(
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+apellido varchar(30)
+nombre VARCHAR(20),
+domicilio VARCHAR(30),
+telefono VARCHAR(11)
+);
+
+2)
+INSERT INTO agenda(apellido, nombre, domicilio, telefono)
+Values('Mores','Alberto','Colon 123','4234567'),
+('Torres','Juan','Avellaneda 135','4458787'),
+('Lopez','Mariana','Urquiza 333','4545454'),
+('Lopez','Jose','Urquiza 333','4545454'),
+('Peralta','Susana','Gral. Paz 1234','4123456');
+
+3)
+UPDATE agenda 
+SET nombre = 'Juan José'
+WHERE nombre = 'Juan';
+
+4)
+UPDATE agenda SET telefono = '4545454'
+WHERE telefono = '4445566';
+
+5)
+UPDATE agenda 
+SET nombre = 'Juan José'
+WHERE nombre = 'Juan';
+

@@ -1,0 +1,45 @@
+﻿Ejercicio Contactos:
+
+1)
+USE bd1;
+SELECT nombre,apellidos FROM contactos
+WHERE cabello='Castaño' AND ojos_color='Marrones';
+
+2)
+SELECT COUNT(id) FROM contactos 
+WHERE ojos_color='Marrones' AND (cabello='Castaño' OR cabello='Rubio');
+
+3)
+SELECT COUNT(cabello), localidad, cabello FROM contactos
+GROUP BY cabello, localidad
+
+4)
+SELECT COUNT(cabello), localidad, cabello FROM contactos
+WHERE sexo='F'
+GROUP BY cabello, localidad
+
+5)
+SELECT nombre, apellidos, localidad, dirección, teléfono FROM contactos
+WHERE nombre LIKE '%J%O%' 
+ORDER BY nombre, localidad ASC
+
+6)
+SELECT COUNT(id) AS 'cantidad de habitantes' , AVG(peso_kg) AS 'peso promedio', 
+AVG(altura) AS 'altura promedio', AVG(hijos) AS 'cantidad de hijos promedio', localidad FROM contactos
+GROUP BY localidad
+
+7)
+SELECT nombre, apellidos FROM contactos
+WHERE (sexo='F' AND cabello='Pelirrojo' AND altura>1.70) OR 
+(sexo='M' AND cabello='Castaño' AND localidad='Madrid')
+
+8)
+SELECT COUNT(id) AS 'cantidad de personas', ROUND (AVG(altura), 2) AS 'promedio de altura',
+ cabello, ojos_color FROM contactos
+GROUP BY cabello, ojos_color 
+
+SELECT COUNT(id) AS 'cantidad de personas', ROUND (AVG(altura), 2) AS 'promedio de altura', cabello, ojos_color FROM contactos
+WHERE altura> 1.70
+GROUP BY cabello, ojos_color 
+#las consultas 2 Y 3 del ítem 8 son iguales
+

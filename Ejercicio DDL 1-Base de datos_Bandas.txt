@@ -1,0 +1,109 @@
+Ejercicio DDL 1-Base de	datos:
+
+1) CREATE DATABASE bandas;
+
+USE bandas;
+
+2) CREATE TABLE bandas(
+nombre TEXT
+);
+
+3)DROP TABLE bandas; #(si no la borro antes no la puedo volver a crear)
+ CREATE TABLE bandas(
+id INTEGER PRIMARY KEY AUTO_INCREMENT,
+nombre TEXT
+);
+
+ALTER TABLE bandas
+MODIFY nombre TEXT NOT NULL;
+
+ALTER TABLE bandas
+ADD premios integer;
+
+
+4)DROP TABLE bandas;
+
+5)CREATE TABLE bandas(
+id INTEGER PRIMARY KEY AUTO-INCREMENT,
+nombre TEXT,
+premios INTEGER
+);
+
+INSERT INTO bandas(nombre, premios)
+VALUES ('Almendra', 28);
+
+6)INSERT INTO bandas(nombre, premios)
+VALUES ('Pescado Rabioso', NULL),
+('Sui Generis', 42) 
+('Seru Giran', 58);
+
+7)CREATE TABLE artistas(
+id INTEGER PRIMARY KEY AUTO-INCREMENT,
+nombre TEXT,
+apellido TEXT,
+fecha_de_nacimiento DATE
+);
+
+INSERT INTO artistas(nombre, apellido, date)
+VALUES ('Luis Alberto', 'Spinetta', '1950-01-23'),
+('Charly', 'García', '1951-10-23') 
+('Pedro', 'Aznar', '1959-07-23'),
+('David', 'Lebon', '1952-10-05');
+
+8)CREATE TABLE banda_artista(
+id INTEGER PRIMARY KEY AUTO-INCREMENT,
+id_banda INTEGER FOREIGN KEY,??
+id_artista INTEGER FOREIGN KEY ??
+);
+
+FOREIGN KEY(id_bandas) REFERENCES bandas(id)
+
+INSERT INTO banda_artista(id_banda, id_artista)
+VALUES (3, 2),
+(4, 2) 
+(4, 3),
+(1, 1),
+(2, 1);
+
+9)DELETE FROM bandas;
+/*no se borra porque es una tabla padre, pero se me borraron los datos de las bandas que no estaban 
+enlazados a las otras tablas, por lo que los vuelvo a cargar para ejecutar la siguiente consulta
+
+INSERT INTO bandas(nombre, premios)*/
+VALUES ('Almendra', 28),
+('Pescado Rabioso', NULL); 
+
+10)DELETE FROM bandas
+WHERE premios<30;
+
+11)DELETE FROM bandas
+WHERE premios<30 OR premios IS NULL;
+
+12)ALTER TABLE artistas
+ADD apodo TEXT;
+
+INSERT INTO artistas(nombre, apellido, fecha_de_nacimiento)
+VALUES('Rodolfo', 'Paez', ''1963-03-13);
+
+UPDATE artistas
+SET apodo = 'El Flaco'
+WHERE id = 1
+
+UPDATE artistas
+SET apodo = 'Fito'
+WHERE id = 5;
+
+
+13)UPDATE artista
+SET apodo = 'Sin apodo'
+WHERE apodo = NULL;
+#esta querie no me la tomó, no salta error, simplemente no lo escribe
+
+14)INSERT INTO artistas(apodo)
+VALUES('Pappo')
+
+UPDATE artistas
+SET nombre = 'Norberto Anibal',
+apellido='Napolitano',
+fecha_de_nacimiento='1950-03-10'
+WHERE id = 6;
