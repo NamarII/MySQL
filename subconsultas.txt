@@ -1,0 +1,62 @@
+Subconsultas:
+1)
+SELECT Emp_No AS Legajo, Apellido, Fecha_Alt FROM emp
+ORDER BY Fecha_Alt 
+LIMIT 1;
+
+También:
+SELECT Emp_No AS Legajo, Apellido, Fecha_Alt 
+FROM emp
+WHERE Fecha_Alt=(SELECT MIN(Fecha_Alt) from emp)
+2)
+SELECT Apellido, Oficio FROM emp
+WHERE Oficio=(SELECT Oficio FROM emp 
+WHERE Apellido='JIMENEZ');
+
+3)
+SELECT Apellido, Oficio, Salario, Dept_No FROM emp
+WHERE Salario>(SELECT MAX(Salario) 
+FROM emp WHERE Dept_No=30);
+
+4)***************
+SELECT Apellido, Oficio FROM emp
+WHERE Dept_No=20 AND Oficio IN (
+SELECT distinct(Oficio) FROM emp
+WHERE dept_No=(SELECT Dept_No FROM dept WHERE Dnombre='Ventas'));
+******************
+5)
+Select Apellido, Oficio, Salario FROM emp
+WHERE Salario>(SELECT AVG(Salario) from emp 
+WHERE Oficio='DIRECTOR') AND Oficio<>('Presidente')
+
+también:
+SELECT * FROM emp
+WHERE oficio <> 'presidente' and salario > (SELECT AVG(salario) FROM emp
+WHERE oficio='director') 
+
+6)
+SELECT Apellido, Funcion, Salario, Hospital_Cod FROM plantilla
+WHERE Funcion LIKE '%Enfermer%'  AND Hospital_cod=
+(Select Hospital_Cod from hospital WHERE Nombre='San Carlos')
+
+7)
+SELECT Apellido, salario*13 AS 'salario anual' FROM plantilla
+WHERE Hospital_cod IN
+(SELECT Hospital_cod FROM hospital WHERE nombre IN('General', 'Provincial'))
+**************
+ó también:
+SELECT Apellido, salario*13 AS 'salario anual' FROM plantilla
+JOIN hospital ON plantilla.Hospital_cod=Hospital.Hospital_cod
+WHERE nombre IN ('General', 'Provincial')
+***********
+
+
+tambien:
+SELECT Salario *12 AS 'Salario anual',Apellido,Funcion
+FROM plantilla
+WHERE Hospital_Cod IN (SELECT Hospital_Cod FROM hospital WHERE Nombre IN ('Provincial','General'));
+
+8)*************antes hay que traducir al inglés los meses de la BD*****************
+SELECT Apellido, Fecha_Nac FROM enfermo
+WHERE STR_TO_DATE(Fecha_Nac, '%d-%M-%Y')<
+(SELECT STR_TO_DATE(Fecha_Nac, '%d-%M-%Y') FROM enfermo WHERE Apellido LIKE '%Miller%')
